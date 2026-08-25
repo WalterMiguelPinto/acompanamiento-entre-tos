@@ -199,3 +199,12 @@ blockquote { margin: 28px 0 0; padding: 20px 24px; background: var(--cream); bor
   .contact-card { padding: 34px 26px; }
   .contact-actions { align-items: stretch; }
 }
+.brand {
+  display: flex;
+  align-items: center;
+}
+.brand-logo {
+  width: 150px; /* ajustá este valor según tu diseño */
+  height: auto;
+  display: block;
+}
