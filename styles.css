@@ -204,7 +204,7 @@ blockquote { margin: 28px 0 0; padding: 20px 24px; background: var(--cream); bor
   align-items: center;
 }
 .brand-logo {
-  width: 150px; /* ajustá este valor según tu diseño */
+  width: 100px; /* ajustá este valor según tu diseño */
   height: auto;
   display: block;
 }
