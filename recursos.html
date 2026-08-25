@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Recursos para Terapistas Ocupacionales - Acompañamiento entre TOs">
+  <title>Recursos | Acompañamiento entre TOs</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .resources-page { padding: 72px 0 96px; }
+    .resources-hero { max-width: 760px; margin: 0 auto 42px; text-align: center; }
+    .resources-eyebrow { display:inline-block; margin-bottom:12px; font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#b86f52; }
+    .resources-hero h1 { margin:0 0 16px; font-size:clamp(2.5rem,6vw,4.8rem); line-height:.98; }
+    .resources-hero p { max-width:680px; margin:0 auto; color:#6a5a52; font-size:1.05rem; line-height:1.7; }
+    .resources-tools { display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap; margin-bottom:28px; }
+    .resources-search { flex:1 1 280px; min-width:240px; padding:14px 18px; border:1px solid rgba(88,69,59,.14); border-radius:999px; background:#fffaf4; color:#58453b; outline:none; font:inherit; box-sizing:border-box; }
+    .resources-search:focus { border-color:#c98768; box-shadow:0 0 0 4px rgba(201,135,104,.12); }
+    .resource-filters { display:flex; gap:8px; flex-wrap:wrap; }
+    .resource-filter { border:1px solid rgba(88,69,59,.14); background:#fffaf4; color:#58453b; border-radius:999px; padding:10px 14px; cursor:pointer; font:inherit; transition:.2s ease; }
+    .resource-filter:hover, .resource-filter.active { background:#c98768; border-color:#c98768; color:#fffaf4; }
+    .resources-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+    .resource-card { display:flex; flex-direction:column; overflow:hidden; border:1px solid rgba(88,69,59,.08); border-radius:24px; background:rgba(255,250,244,.86); box-shadow:0 12px 32px rgba(88,69,59,.08); }
+    .resource-cover { min-height:150px; display:grid; place-items:center; padding:24px; background:#f1e5d6; color:#7b665c; text-align:center; }
+    .resource-icon { font-size:3rem; margin-bottom:8px; }
+    .resource-type { display:inline-block; margin-top:4px; font-size:.74rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .resource-body { display:flex; flex-direction:column; gap:10px; padding:22px; flex:1; }
+    .resource-category { margin:0; color:#b86f52; font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+    .resource-card h2 { margin:0; color:#58453b; font-size:1.25rem; line-height:1.2; }
+    .resource-card p { margin:0; color:#6a5a52; line-height:1.6; }
+    .resource-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:auto; padding-top:8px; }
+    .resource-actions a { display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:0 16px; border-radius:999px; text-decoration:none; font-weight:700; font-size:.92rem; }
+    .resource-primary { background:#c98768; color:#fffaf4; }
+    .resource-secondary { background:transparent; color:#58453b; border:1px solid rgba(88,69,59,.15); }
+    .resource-empty { display:none; padding:38px 20px; text-align:center; color:#6a5a52; }
+    .resources-note { margin-top:34px; padding:20px 22px; border-radius:20px; background:#e8efe7; color:#4f6151; line-height:1.6; }
+    @media (max-width:980px) { .resources-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width:680px) { .resources-page { padding:48px 0 70px; } .resources-grid { grid-template-columns:1fr; } .resources-tools { align-items:stretch; } .resources-search { width:100%; } .resource-filters { width:100%; } }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="inicio">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Acompañamiento entre TOs - inicio">
+        <img src="images/logo.png" alt="Acompañamiento entre TOs" class="brand-logo">
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">☰</button>
+
+      <nav class="main-nav" id="main-menu">
+        <a href="index.html#inicio">Inicio</a>
+        <a href="index.html#espacio">El espacio</a>
+        <a href="index.html#somos">Somos</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="recursos.html" aria-current="page">Recursos</a>
+        <a href="index.html#contacto" class="nav-cta">Contactanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="resources-page">
+    <div class="container">
+      <section class="resources-hero">
+        <span class="resources-eyebrow">Biblioteca de Acompañamiento entre TOs</span>
+        <h1>Recursos para nuestra práctica</h1>
+        <p>Materiales para consultar, descargar, compartir y llevar a distintos espacios de la práctica profesional.</p>
+      </section>
+
+      <section aria-label="Buscador y filtros de recursos">
+        <div class="resources-tools">
+          <input id="resource-search" class="resources-search" type="search" placeholder="Buscar un recurso..." aria-label="Buscar un recurso">
+          <div class="resource-filters" role="group" aria-label="Filtrar recursos por tipo">
+            <button class="resource-filter active" type="button" data-filter="todos">Todos</button>
+            <button class="resource-filter" type="button" data-filter="pdf">PDF</button>
+            <button class="resource-filter" type="button" data-filter="imagen">Imágenes</button>
+            <button class="resource-filter" type="button" data-filter="word">Word</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="resources-grid" id="resources-grid" aria-live="polite">
+        <article class="resource-card" data-title="Guía de observación" data-type="pdf">
+          <div class="resource-cover"><div><div class="resource-icon">📄</div><div class="resource-type">PDF</div></div></div>
+          <div class="resource-body">
+            <p class="resource-category">Práctica profesional</p>
+            <h2>Guía de observación</h2>
+            <p>Material para acompañar la observación y el análisis de una situación.</p>
+            <div class="resource-actions">
+              <a class="resource-primary" href="recursos/guia-observacion.pdf" target="_blank" rel="noopener">Ver recurso</a>
+              <a class="resource-secondary" href="recursos/guia-observacion.pdf" download>Descargar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="resource-card" data-title="Lámina visual" data-type="imagen">
+          <div class="resource-cover"><div><div class="resource-icon">🖼️</div><div class="resource-type">Imagen</div></div></div>
+          <div class="resource-body">
+            <p class="resource-category">Material visual</p>
+            <h2>Lámina visual</h2>
+            <p>Recurso visual para imprimir, consultar o compartir.</p>
+            <div class="resource-actions">
+              <a class="resource-primary" href="recursos/lamina-visual.png" target="_blank" rel="noopener">Ver imagen</a>
+              <a class="resource-secondary" href="recursos/lamina-visual.png" download>Descargar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="resource-card" data-title="Registro de actividades" data-type="word">
+          <div class="resource-cover"><div><div class="resource-icon">📝</div><div class="resource-type">Word</div></div></div>
+          <div class="resource-body">
+            <p class="resource-category">Herramientas</p>
+            <h2>Registro de actividades</h2>
+            <p>Plantilla editable para organizar y registrar información.</p>
+            <div class="resource-actions">
+              <a class="resource-primary" href="recursos/registro-actividades.docx" download>Descargar Word</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="resource-card" data-title="Material gratuito para comenzar" data-type="pdf">
+          <div class="resource-cover"><div><div class="resource-icon">🌿</div><div class="resource-type">PDF</div></div></div>
+          <div class="resource-body">
+            <p class="resource-category">Para empezar</p>
+            <h2>Material gratuito</h2>
+            <p>Un ejemplo de recurso gratuito para inaugurar la biblioteca.</p>
+            <div class="resource-actions">
+              <a class="resource-primary" href="recursos/material-gratuito.pdf" target="_blank" rel="noopener">Ver recurso</a>
+              <a class="resource-secondary" href="recursos/material-gratuito.pdf" download>Descargar</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="resource-empty" id="resource-empty">No encontramos recursos que coincidan con tu búsqueda.</div>
+
+      <div class="resources-note">
+        <strong>¿Tenés un material para compartir?</strong><br>
+        Más adelante podemos sumar una sección para que los recursos se organicen por tema, población o tipo de archivo.
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    const searchInput = document.getElementById('resource-search');
+    const filterButtons = document.querySelectorAll('.resource-filter');
+    const cards = [...document.querySelectorAll('.resource-card')];
+    const emptyState = document.getElementById('resource-empty');
+    let activeFilter = 'todos';
+
+    function applyResourceFilters() {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const title = (card.dataset.title || '').toLowerCase();
+        const type = (card.dataset.type || '').toLowerCase();
+        const visible = title.includes(query) && (activeFilter === 'todos' || type === activeFilter);
+        card.style.display = visible ? 'flex' : 'none';
+        if (visible) visibleCount++;
+      });
+
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', applyResourceFilters);
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+        applyResourceFilters();
+      });
+    });
+  </script>
+</body>
+</html>
